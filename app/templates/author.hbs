@@ -2,8 +2,19 @@
   <div class="search">
     {{input type="text" placeholder="Search be Author name" value=search}}
   </div>
-
-  <a href="" class="btn-new">
+  {{! блочная форма хелпера }}
+  {{!-- {{#if authorize}}
+    <a href="" class="btn-new">
+      <div class="sr-only">Add new Author</div>
+    </a>
+  {{/if}} --}}
+  {{! инлайн форма хелпера }}
+  {{! если authorize=true то подставляем первое значение, иначе второе (btn-recessed) }}
+  {{!-- <a href="" class="btn-new {{if authorize "" "btn-recessed"}}">
+      <div class="sr-only">Add new Author</div>
+    </a> --}}
+    {{!-- unless = если authorize=false то подставляем первое значение, иначе второе --}}
+  <a href="" class="btn-new {{unless authorize 'btn-recessed'}}">
     <div class="sr-only">Add new Author</div>
   </a>
 </div>
@@ -13,11 +24,13 @@
 
   <ul class="collection">
     {{#each model as |author|}}
-    <li>
-      <a href="">
-        {{get-author-name author.firstName author.lastName}}
-      </a>
-    </li>
+      <li>
+        <a href="">
+          {{get-author-name author.firstName author.lastName}}
+        </a>
+      </li>
     {{/each}}
   </ul>
+
+  <div>{{temp}}</div>
 </div>

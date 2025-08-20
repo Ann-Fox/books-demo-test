@@ -6,5 +6,6 @@ export default Route.extend({
 
   model(){
     return this.get('dataService').getAuthors();
-  }
+  },
+  // templateName: 'author-list', //принцип configuration - можно переопределить шаблон, если названия не совпадают (шаблон author-list.hbs)
 });
