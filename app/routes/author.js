@@ -7,10 +7,14 @@ export default Route.extend({
   dataService: service("data"),
 
   model() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       later(async () => {
-        let authors = await this.get("dataService").getAuthors();
-        resolve(authors);
+        try {
+          let authors = await this.get("dataService").getAuthors();
+          resolve(authors);
+        } catch (error) {
+          reject("Connection failed");
+        }
       }, 3000);
     });
   },
